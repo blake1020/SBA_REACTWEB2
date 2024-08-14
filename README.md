@@ -73,24 +73,15 @@ Click on the favorites tab in the navbar to view your favorite games.
 Play Games:
 
 Use the "Play Now" button on the game detail page to be redirected to the game’s play page.
+
 Unsolved Problems
 Favicon Issue:
 Attempted to replace the default world icon with a joystick emoticon but was unable to resolve this issue. The favicon currently remains as the default world icon.
-Contribution
-Contributions are welcome! If you’d like to contribute to this project, please follow these steps:
-
-Fork the repository.
-Create a new branch (git checkout -b feature-branch).
-Make your changes and commit them (git commit -am 'Add new feature').
-Push to the branch (git push origin feature-branch).
-Open a pull request.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 Contact
-Author/Maintainer: Your Name
-Email: your.email@example.com
-GitHub: Your GitHub Profile
+Author/Maintainer: Leandreia Blakemore
+Email: leandreiablakemore@rocketmai.com
+GitHub: https://github.com/blake1020
 
 Acknowledgments
 Free-to-Play Games Database API: For providing the game data.
