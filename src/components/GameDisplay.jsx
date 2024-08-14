@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import GameCard from "./GameCard";
 import "../css/GameDisplay.css";
 
-function GameDisplay({ games }) {
-  const [favorite, setFavorites] = useState([])
-  // console.log("These are the games", games);
+function GameDisplay({ games, onToggleFavorite, favorites}) {
+  // const [favorite, setFavorites] = useState([])
+  // // console.log("These are the games", games);
   const gamesArray = games && Array.isArray(games.results) ? games.results : [];
+  const favoriteArray = favorites || [];
   // if (gamesArray.length === 0) {
   //   return <div>No games available</div>;
   // }
@@ -17,9 +18,9 @@ function GameDisplay({ games }) {
       <div className="game-cards-container">
         {games.map((gameItem) => (
           <div key={gameItem.id} className="game-card-wrapper">
-            <GameCard game={gameItem} />
+            <GameCard game={gameItem} onToggleFavorite={onToggleFavorite} isFavorite={favorites.includes(gameItem.id)}/>
             <Link to={`/game/${gameItem.id}`}>
-              {/* <button className="view-details-button">View Details</button> */}
+
             </Link>
           </div>
         ))}

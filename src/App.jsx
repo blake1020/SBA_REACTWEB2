@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import GameDisplay from "./components/GameDisplay";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GameDetails from "./components/GameDetails";
-import Favorites from "./components/Favorites"
+import FavoritesPage from "./components/FavoritesPage"
 import Navbar from "./app/Navbar";
+import './css/App.css'
 
 const API_URL =
   "https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alphabetical";
@@ -16,19 +17,21 @@ const options = {
   },
 };
 
-try {
-  const response = await fetch(API_URL, options);
-  const result = await response.text();
-  // console.log(result);
-} catch (error) {
-  console.error(error);
-}
+// try {
+//   const response = await fetch(API_URL, options);
+//   const result = await response.text();
+//   // console.log(result);
+// } catch (error) {
+//   console.error(error);
+// }
 
 function App() {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [favorites, setFavorites] = useState([]);
+  
+  
   useEffect(() => {
     const getGames = async () => {
       try {
@@ -48,16 +51,23 @@ function App() {
     getGames();
   }, []);
 
+const toggleFavorite = (gameId) => {
+  setFavorites((prevFavorites) => prevFavorites.includes(gameId) ? prevFavorites.filter(id => id !== gameId) :[...prevFavorites, gameId]
+  );
+};
+
+const favoriteGames = games.filter(game => favorites.includes(game.id))
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<GameDisplay games={games} />} />
+        <Route path="/" element={<GameDisplay games={games} onToggleFavorite={toggleFavorite} favorites={favorites}/>} />
 
         <Route path="/game/:id" element={<GameDetails />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/favorites" element={<FavoritesPage favorites={favorites} games={games} />} />
         
       </Routes>
     </Router>

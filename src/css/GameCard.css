@@ -1,6 +1,8 @@
 .game-card {
+  
+    background-color: black;
   position: relative;
-    border: 1px solid #ddd;
+    border: 2.5px solid lightgreen;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -14,6 +16,9 @@
   .game-card-image {
     width: 100%;
     height: auto;
+  }
+  .game-card-image-container {
+    position: relative;
   }
   
   .game-card-content {
@@ -33,13 +38,18 @@
   .favorite-button.favorite {
     color: red; /* Shows when favorited*/
   }
+  .favorite-button:hover {
+    color: darkred; /* Change color on hover */
+  }
+  
   .game-card-title {
+    color: darkblue;
     font-size: 1.2em;
     margin: 0;
   }
   
   .game-card-genre {
-    color: #555;
+    color: white;
   }
   
   .game-card-link {
